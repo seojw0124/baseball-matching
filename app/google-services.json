@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "656202886566",
+    "project_id": "baseball-matching",
+    "storage_bucket": "baseball-matching.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:656202886566:android:1914ea373e803eda4d3367",
+        "android_client_info": {
+          "package_name": "com.baseballmatching.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "656202886566-mh6931h2n82tns03jc5jn43kt6htuujh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnsg5TNfuHPrwHtepF67b05DfTsh9M49E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "656202886566-mh6931h2n82tns03jc5jn43kt6htuujh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
