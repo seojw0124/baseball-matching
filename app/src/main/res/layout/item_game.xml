@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="24dp"
+    android:paddingEnd="24dp"
+    android:paddingBottom="12dp">
+
+    <View
+        android:id="@+id/bg_banner_game"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@drawable/background_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginBottom="8dp"
+        android:text="Home"
+        app:layout_constraintBottom_toTopOf="@id/iv_banner_game_home_team_logo"
+        app:layout_constraintStart_toStartOf="@id/bg_banner_game" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="8dp"
+        android:text="AWAY"
+        app:layout_constraintBottom_toTopOf="@id/iv_banner_game_away_team_logo"
+        app:layout_constraintEnd_toEndOf="@id/bg_banner_game" />
+
+    <ImageView
+        android:id="@+id/iv_banner_game_home_team_logo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="50dp"
+        android:contentDescription="Team_Logo"
+        android:src="@drawable/logo_kt_wiz"
+        app:layout_constraintBottom_toTopOf="@id/tv_banner_game_time"
+        app:layout_constraintStart_toStartOf="@id/bg_banner_game" />
+
+    <TextView
+        android:id="@+id/tv_banner_game_verse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:text="VS"
+        app:layout_constraintBottom_toTopOf="@+id/tv_banner_game_time"
+        app:layout_constraintEnd_toStartOf="@id/iv_banner_game_away_team_logo"
+
+        app:layout_constraintStart_toEndOf="@id/iv_banner_game_home_team_logo" />
+
+    <ImageView
+        android:id="@+id/iv_banner_game_away_team_logo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="50dp"
+        android:contentDescription="Team_Logo"
+        android:src="@drawable/logo_kia_tigers"
+        app:layout_constraintBottom_toTopOf="@id/tv_banner_game_time"
+        app:layout_constraintEnd_toEndOf="@id/bg_banner_game" />
+
+
+    <TextView
+        android:id="@+id/tv_banner_game_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="18:30"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@id/tv_banner_game_location"
+        app:layout_constraintEnd_toEndOf="@id/bg_banner_game"
+        app:layout_constraintStart_toStartOf="@id/bg_banner_game" />
+
+    <TextView
+        android:id="@+id/tv_banner_game_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:text="사직야구장"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@id/btn_banner_game_detail"
+        app:layout_constraintEnd_toEndOf="@id/bg_banner_game"
+        app:layout_constraintStart_toStartOf="@id/bg_banner_game" />
+
+    <Button
+        android:id="@+id/btn_banner_game_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="12dp"
+        android:text="상세정보 보러가기"
+        app:layout_constraintBottom_toBottomOf="@id/bg_banner_game"
+        app:layout_constraintEnd_toEndOf="@id/bg_banner_game"
+        app:layout_constraintStart_toStartOf="@id/bg_banner_game" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
