@@ -32,7 +32,6 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:text="HOME"
             app:layout_constraintBottom_toTopOf="@id/iv_banner_game_home_team_logo"
             app:layout_constraintStart_toStartOf="@id/bg_banner_game" />
@@ -42,11 +41,12 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:contentDescription="Team_Logo"
-            android:src="@drawable/logo_kt_wiz"
+            tools:src="@drawable/logo_kt_wiz"
             app:layout_constraintBottom_toTopOf="@id/tv_banner_game_time"
             app:layout_constraintStart_toStartOf="@id/bg_banner_game" />
 
         <TextView
+            android:id="@+id/tv_banner_game_home_team_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="KT 위즈"
@@ -68,7 +68,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:text="AWAY"
             app:layout_constraintBottom_toTopOf="@id/iv_banner_game_away_team_logo"
             app:layout_constraintEnd_toEndOf="@id/bg_banner_game" />
@@ -78,11 +77,12 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:contentDescription="Team_Logo"
-            android:src="@drawable/logo_kia_tigers"
+            tools:src="@drawable/logo_kia_tigers"
             app:layout_constraintBottom_toTopOf="@id/tv_banner_game_time"
             app:layout_constraintEnd_toEndOf="@id/bg_banner_game" />
 
         <TextView
+            android:id="@+id/tv_banner_game_away_team_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="KT 위즈"
@@ -95,7 +95,7 @@
         android:id="@+id/tv_banner_game_verse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="34dp"
         android:text="VS"
         app:layout_constraintBottom_toTopOf="@+id/tv_banner_game_time"
         app:layout_constraintEnd_toStartOf="@+id/ll_banner_game_away_team"
@@ -108,16 +108,17 @@
         android:layout_marginBottom="8dp"
         android:text="18:30"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@id/tv_banner_game_location"
+        app:layout_constraintBottom_toTopOf="@id/tv_banner_game_ballpark"
         app:layout_constraintEnd_toStartOf="@+id/ll_banner_game_away_team"
         app:layout_constraintStart_toEndOf="@+id/ll_banner_game_home_team" />
 
     <TextView
-        android:id="@+id/tv_banner_game_location"
+        android:id="@+id/tv_banner_game_ballpark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="사직야구장"
         android:textAlignment="center"
+        android:layout_marginTop="4dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_banner_game_detail"
         app:layout_constraintEnd_toStartOf="@+id/ll_banner_game_away_team"
