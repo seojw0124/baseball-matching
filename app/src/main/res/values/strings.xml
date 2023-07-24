@@ -3,4 +3,6 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_game_detail">%1$s vs %2$s</string>
+    <string name="date_game_detail">%1$s월 %2$s일 %3$s시 %4$s분</string>
 </resources>

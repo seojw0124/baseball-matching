@@ -1,0 +1,64 @@
+{
+  "teams": [
+    {
+      "team_name": "KIA 타이거스",
+      "ballpark": "챔피언스 필드",
+      "location": "광주광역시",
+      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_HT.png"
+    },
+    {
+      "team_name": "KT 위즈",
+      "ballpark": "챔피언스 필드",
+      "location": "광주광역시",
+      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_KT.png"
+    },
+    {
+      "team_name": "LG 트윈스",
+      "ballpark": "잠실 야구장 ",
+      "location": "서울특별시",
+      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_LG.png"
+    },
+    {
+      "team_name": "NC 다이노스",
+      "ballpark": "NC 파크",
+      "location": "경상남도 창원시",
+      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_NC.png"
+    },
+    {
+      "team_name": "SK 와이번스",
+      "ballpark": "랜더스필드",
+      "location": "인천광역시",
+      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_SK.png"
+    },
+    {
+      "team_name": "두산 베어스",
+      "ballpark": "잠실 야구장",
+      "location": "서울특별시",
+      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_OB.png"
+    },
+    {
+      "team_name": "롯데 자이언츠",
+      "ballpark": "사직 야구장",
+      "location": "부산광역시",
+      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_LT.png"
+    },
+    {
+      "team_name": "삼성 라이온즈",
+      "ballpark": "라이온즈 파크",
+      "location": "대구광역시",
+      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_SS.png"
+    },
+    {
+      "team_name": "키움 히어로즈",
+      "ballpark": "고척스카이돔",
+      "location": "서울특별시",
+      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_WO.png"
+    },
+    {
+      "team_name": "한화 이글스",
+      "ballpark": "이글스파크",
+      "location": "대전광역시",
+      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_HH.png"
+    }
+  ]
+}
