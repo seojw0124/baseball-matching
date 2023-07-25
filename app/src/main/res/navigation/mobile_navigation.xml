@@ -14,12 +14,11 @@
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.baseballmatching.app.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_matching"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.baseballmatching.app.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_my_page"
+        android:name="com.baseballmatching.app.ui.myPage.MyPageFragment"
+        android:label="@string/title_my_page" />
 </navigation>

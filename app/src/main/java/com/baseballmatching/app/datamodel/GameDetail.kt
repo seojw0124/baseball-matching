@@ -10,4 +10,5 @@ data class GameDetail(
     val awayLogo: String? = null,
     val ballpark: String? = null,
     val time: String? = null,
+    val ballparkImage: String? = null,
 ): Parcelable
