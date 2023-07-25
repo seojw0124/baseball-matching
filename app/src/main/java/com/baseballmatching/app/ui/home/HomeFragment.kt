@@ -7,17 +7,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.baseballmatching.app.AssetLoader
+import com.baseballmatching.app.utils.AssetLoader
 import com.baseballmatching.app.R
 import com.baseballmatching.app.databinding.FragmentHomeBinding
 import com.baseballmatching.app.datamodel.Game
 import com.baseballmatching.app.datamodel.GameDetail
-import com.baseballmatching.app.datamodel.Team
 import com.baseballmatching.app.datamodel.TeamData
 import com.baseballmatching.app.ui.GameDetailActivity
 import com.google.firebase.database.DataSnapshot
@@ -26,9 +23,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
-import java.time.Instant
 import java.time.LocalDate
-import java.time.LocalDateTime
 
 class HomeFragment : Fragment() {
 

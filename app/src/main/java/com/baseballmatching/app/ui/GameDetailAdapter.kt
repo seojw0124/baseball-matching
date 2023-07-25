@@ -15,6 +15,7 @@ class GameDetailAdapter: ListAdapter<MatchingUserItem, GameDetailAdapter.ViewHol
         fun bind(matchingUser: MatchingUserItem) {
             binding.tvUserName.text = matchingUser.userName
             binding.tvUserGender.text = matchingUser.gender
+            binding.tvUserPreferredSeat.text = "선호 좌석: ${matchingUser.preferredSeat}"
         }
     }
 
