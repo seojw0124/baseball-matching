@@ -25,6 +25,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.GameDetailActivity" />
+        <activity android:name=".ui.SignInActivity" />
+        <activity android:name=".ui.MatchingRegistrationActivity" />
     </application>
 
 </manifest>

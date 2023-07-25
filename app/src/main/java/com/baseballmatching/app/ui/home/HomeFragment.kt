@@ -33,8 +33,7 @@ import java.time.LocalDateTime
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
-    /*private lateinit var game: Game
-    private var team: Team? = null*/
+    private lateinit var homeAdapter: HomeAdapter
 
     private lateinit var teamTitle: String
     @RequiresApi(Build.VERSION_CODES.O)
@@ -54,7 +53,9 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentHomeBinding.bind(view)
 
-        val homeAdapter = HomeAdapter { game ->
+        gameList.clear()
+
+        homeAdapter = HomeAdapter { game ->
             // 클릭했을 때
             val intent = Intent(context, GameDetailActivity::class.java)
             intent.putExtra("game", game)
@@ -84,6 +85,7 @@ class HomeFragment : Fragment() {
                         var homeLogo = ""
                         var awayLogo = ""
                         var ballpark = ""
+                        var ballparkImage = ""
 
                         val gson = Gson()
                         val teamData = gson.fromJson(teamsJsonString, TeamData::class.java)
@@ -91,6 +93,7 @@ class HomeFragment : Fragment() {
                             if (team.teamName == game.home) {
                                 homeLogo = team.logo.toString()
                                 ballpark = team.ballpark.toString()
+                                ballparkImage = team.ballparkImage.toString()
                             } else if (team.teamName == game.away) {
                                 awayLogo = team.logo.toString()
                             }
@@ -102,7 +105,7 @@ class HomeFragment : Fragment() {
                         val date = dateTimeSplit?.get(0)
                         val time = dateTimeSplit?.get(1)?.split("Z")?.get(0)
 
-                        val gameDetail = GameDetail(game, homeLogo, awayLogo, ballpark, time)
+                        val gameDetail = GameDetail(game, homeLogo, awayLogo, ballpark, time, ballparkImage)
 
                         if (date == currentDate) {
                             gameList.add(gameDetail)
@@ -122,6 +125,17 @@ class HomeFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
             adapter = homeAdapter
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        homeAdapter.notifyDataSetChanged()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        gameList = mutableListOf()
     }
 
 

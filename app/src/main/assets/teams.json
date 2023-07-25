@@ -4,61 +4,81 @@
       "team_name": "KIA 타이거스",
       "ballpark": "챔피언스 필드",
       "location": "광주광역시",
-      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_HT.png"
+      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_HT.png",
+      "seats": "https://i.namu.wiki/i/E4ITlVL1k-SSezkC8-Qs0oQhg7MLDtoe2wjQD9b45N4Xj-sszAyzl_p_LVUCAM40sH523bQD1sKifZAvVMtSP7lcNYllfxw_kldEYAoA6ER7HJPbGSTNvsaIFr01FhyQ9kvYl7EYdoIRMT3FVE3owg.webp",
+      "ballpark_image": "https://i.namu.wiki/i/JKsXSH9PtcAvp7x2uSfaSTK49mfK5-sEAtcd7-P4kWAw6tIF_kUtbflyhb1xZb-T698Hyzsk99pys1gthJAHRcnvMDWtG5I4F0Jy2iAHJmyCSrfFh4XHEC1HU1v95NnZAb0q__zpktMyyn3pdDK-LA.webp"
     },
     {
       "team_name": "KT 위즈",
       "ballpark": "챔피언스 필드",
       "location": "광주광역시",
-      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_KT.png"
+      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_KT.png",
+      "seats": "https://i.namu.wiki/i/Tg-qsPMafdmuAxVA16H5Ud3ERo5aDzq2CeWfVyJBDz98uckUJwh_NxDIZTI9_R2gKkD5pCZ3-RpxzL-exTqfku7sERCvEBQPF4FRzDQVtzaPlBSK3IT5Qntr3GrH7qRnOLDvRJZCjIN4xaMj4eDt6Q.webp",
+      "ballpark_image": "https://i.namu.wiki/i/CkNu2vZ3_aaiPC_4DTwlHwqMtIdyFJgsrfqX5uFTU8sB9E3FBKkHTiSszUKJzYeEdDUKALK-rYsMbJHh8V9Dj3CznbfYPahqMWIr7rloyDkhhRLtLwFEQ3Ko6XdXu8kG4ooStFvHgKwZ4hLxCsWgdA.webp"
     },
     {
       "team_name": "LG 트윈스",
       "ballpark": "잠실 야구장 ",
       "location": "서울특별시",
-      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_LG.png"
+      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_LG.png",
+      "seats": "https://i.namu.wiki/i/0lPLYDasE_CHtr6AyH3VgqfLAnZew3VfEkMEI5Nn9KnyYLhKtia3UxcwZozXY4MyVt3LM3EdhiC4lK6NSwHms54PSFkl4tHcjDpjhU-EzOQq7qAKlvBtrCmZpt_YQeyDuPuC2GC8ZNUQTHU_Qe7F3A.webp",
+      "ballpark_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Jamsil_Baseball_Stadium_panorama_%28April_28_2017%29.jpg/1200px-Jamsil_Baseball_Stadium_panorama_%28April_28_2017%29.jpg"
     },
     {
       "team_name": "NC 다이노스",
       "ballpark": "NC 파크",
       "location": "경상남도 창원시",
-      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_NC.png"
+      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_NC.png",
+      "seats": "https://i.namu.wiki/i/g_ezP2zw_vgMNdr8yqUj7L6RldUqJDlQtRUCJwpG3ol4XP9wwPW7ToelUx-ZW9N2CSchDNMqrzskb3ceqGcCXMhHG-cKtIPABPEDNDodyZn3Dk0jaTpRmipHEa6_yOtTNNDn1j5sSsO_H-e9o889Tg.webp",
+      "ballpark_image": "https://i.namu.wiki/i/34hLjIXRjIcQdfQAybpxrat771LgdhnqVDOBBkiLEgyJ7RvJbXg77xtvi-17nNlUaR3GaP0ARCPV3bYVLcicILy9kpNJ0KDugJycT7bzccU_fy1uUy2hsU1Cfd-4kVCuZ0ppH9MMzJZz8NaMAbBb7Q.webp"
     },
     {
       "team_name": "SK 와이번스",
       "ballpark": "랜더스필드",
       "location": "인천광역시",
-      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_SK.png"
+      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_SK.png",
+      "seats": "https://i.namu.wiki/i/_TXQ4M5clvDBC9x1EucrY2sh4GhObQ9-7hY5vr0x4oyoaKljoqNdETvBtToWW5ZdD_odNLBpCkvz_pq0CuFXyDNdJqRvcvhHAcoSj0k4Nr6Z6nvxkKdsA_rwmbNhGkllbxeWEbqYqtyMCT7kBBD_dg.webp",
+      "ballpark_image": "https://i.namu.wiki/i/0h-QYe-dkYqnZA1nLwJKtwyNdE1QkbWy0ZIXchQt4jUnsEIUICZ5UjSENa8oER-ibhHmx0ikWaDJuPEJgSg96EM9jGlOHL8_SI2mpzHh2aoIpregCHVt7S_HJaA5BQ9PKYNrMxdpbqHLDUeY8a0upA.webp"
     },
     {
       "team_name": "두산 베어스",
       "ballpark": "잠실 야구장",
       "location": "서울특별시",
-      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_OB.png"
+      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_OB.png",
+      "seats": "https://i.namu.wiki/i/0lPLYDasE_CHtr6AyH3VgqfLAnZew3VfEkMEI5Nn9KnyYLhKtia3UxcwZozXY4MyVt3LM3EdhiC4lK6NSwHms54PSFkl4tHcjDpjhU-EzOQq7qAKlvBtrCmZpt_YQeyDuPuC2GC8ZNUQTHU_Qe7F3A.webp",
+      "ballpark_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Jamsil_Baseball_Stadium_panorama_%28April_28_2017%29.jpg/1200px-Jamsil_Baseball_Stadium_panorama_%28April_28_2017%29.jpg"
     },
     {
       "team_name": "롯데 자이언츠",
       "ballpark": "사직 야구장",
       "location": "부산광역시",
-      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_LT.png"
+      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_LT.png",
+      "seats": "https://i.namu.wiki/i/ocnIkyRHPtrawzPC3aVAKfqYa-Gd-B-m0tGq1j1ioKkhEy-6USwlRJOrr4SQhsv9ZqM7_cm1f4J0Lz1ZMtWLrYTSgnlrSXYPZGRl3Q2tS9J_H1HLTpWnrPVAva1uDQMExNAT3mTanFABRzXt-HiIIA.webp",
+      "ballpark_image": "https://i.namu.wiki/i/IAyyZVXbdTbPwlugvlZ1TUfN3CMav6eQR-PDh2BB6ymi3tjvCfRhuLRTerExFwFS0uomSrkr3cnINjTlaJK3J1GeVc3sB6ICqyjK34AV-5Vbb94fuVvojnEG7-jWrm4bI4kqpsyQ7mcfzvxVhbYtNg.webp"
     },
     {
       "team_name": "삼성 라이온즈",
       "ballpark": "라이온즈 파크",
       "location": "대구광역시",
-      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_SS.png"
+      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_SS.png",
+      "seats": "https://i.namu.wiki/i/1Kmuy1xX-TVfkJHz_IC46zlPCJ78GmWNTDsid_Hnxi25qWKMATgk7N0fGDV83cg8DqtUSq2a0mkfCvs9ojEhcwvToZDKkzZnrpHg3nK7iA98LkvzQ3f5eg_2uC3Zn718bIJ4rv142sXoy5wDpoyp6g.webp",
+      "ballpark_image": "https://i.namu.wiki/i/5CycbHpCMbbJwWjZnux36xKC85D0-84MpY9VFUfDKlRcPTPyuFagABhQ0HCFyTAk6y3-psNaVc-zO0h688Y7P7OdHpwWD6sdypXw51cphHcMjJrHYFUyA7llqlK9CQ_im8XvSPEZpxFfvht-Xj_x9Q.webp"
     },
     {
       "team_name": "키움 히어로즈",
-      "ballpark": "고척스카이돔",
+      "ballpark": "고척 스카이돔",
       "location": "서울특별시",
-      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_WO.png"
+      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_WO.png",
+      "seats": "https://i.namu.wiki/i/OrYcmiAU5jWlcs2_apNADtY-yaRdHOrb9aqH3Vi_sf1C79mMQEJbHzp4b412pzPw_oJpMKlpBSHl_2GKNu9HmAf70ZHDP46fOA-ehFTmHVxZlzqGpR3qRoMg5NBALkp2zCmugkQOLDe-eIOZo2vf9w.webp",
+      "ballpark_image": "https://i.namu.wiki/i/XT_0I4F2JmMziFmdoN3gtAXkcPwQCdixgF5n8lLHAQK7biOz_LW661qaI_dBohiyIUejHE-4fte35S7ApfTkEw.webp"
     },
     {
       "team_name": "한화 이글스",
       "ballpark": "이글스파크",
       "location": "대전광역시",
-      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_HH.png"
+      "logo": "https://lgcxydabfbch3774324.cdn.ntruss.com/KBO_IMAGE/emblem/regular/fixed/emblem_HH.png",
+      "seats": "https://www.hanwhaeagles.co.kr/images/pages/eagles/img_eagles_park.png",
+      "ballpark_image": "https://www.daejonilbo.com/news/photo/202305/2064688_481239_4307.jpg"
     }
   ]
 }

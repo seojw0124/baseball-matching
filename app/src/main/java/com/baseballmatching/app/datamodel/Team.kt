@@ -7,4 +7,6 @@ data class Team(
     val ballpark: String? = null,
     val location: String? = null,
     val logo: String? = null,
+    val seats: String? = null,
+    @SerializedName("ballpark_image")val ballparkImage: String? = null,
 )
