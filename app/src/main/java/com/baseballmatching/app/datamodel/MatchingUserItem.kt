@@ -1,11 +1,6 @@
 package com.baseballmatching.app.datamodel
 
-data class MatchingUserItem (
-     val userId: String? = null,
-     val userName: String? = null,
-     val age: String? = null,
-     val gender: String? = null,
-     val preferredSeat: String? = null,
-     val dateTime: Long? = null,
-     var favorite: Boolean? = null
+data class MatchingUserItem(
+    val matchingRegistration: MatchingRegistration,
+    val game: Game,
 )

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.baseballmatching.app.R
 import com.baseballmatching.app.databinding.ActivityGameDetailBinding
 import com.baseballmatching.app.datamodel.GameDetail
-import com.baseballmatching.app.datamodel.MatchingUserItem
+import com.baseballmatching.app.datamodel.MatchingRegistration
 import com.baseballmatching.app.utils.FirebaseRef
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
@@ -23,7 +23,7 @@ import com.google.firebase.ktx.Firebase
 class GameDetailActivity: AppCompatActivity() {
     private lateinit var binding: ActivityGameDetailBinding
     private lateinit var gameDetailAdapter: GameDetailAdapter
-    private var matchingList: MutableList<MatchingUserItem> = mutableListOf()
+    private var matchingList: MutableList<MatchingRegistration> = mutableListOf()
     private val TAG = "GameDetailActivity"
     private lateinit var gameId: String
     val currentUserId = Firebase.auth.currentUser?.uid.toString()
@@ -68,7 +68,7 @@ class GameDetailActivity: AppCompatActivity() {
 
         //getMatchingList(model?.Game?.id.toString())
 
-        gameDetailAdapter = GameDetailAdapter()
+        gameDetailAdapter = GameDetailAdapter(currentUserId)
         binding.rvMatchingUserList.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = gameDetailAdapter
@@ -78,12 +78,15 @@ class GameDetailActivity: AppCompatActivity() {
                 if (matchingList[position].userId != currentUserId) {
                     otherUserId = matchingList[position].userId.toString()
 
-                    matchingList[position].favorite = !matchingList[position].favorite!!
-                    gameDetailAdapter.notifyItemChanged(position)
-
-                    FirebaseRef.matchingRegistrationRef.child(gameId).child(matchingList[position].userId.toString()).child("favorite").setValue(matchingList[position].favorite)
-
-                    userLikeOtherUser(otherUserId)
+                    if (matchingList[position].likeList?.likedUserId == currentUserId) {
+                        Log.d(TAG, "onItemClick if: ${matchingList[position].likeList?.likedUserId}")
+                        FirebaseRef.matchingRegistrationRef.child(gameId).child(matchingList[position].userId.toString()).child("likeList").child("likedUserId").setValue(null)
+                        userLikeOtherUser(matchingList[position], model, true)
+                    } else {
+                        Log.d(TAG, "onItemClick else: ${matchingList[position].likeList?.likedUserId}")
+                        FirebaseRef.matchingRegistrationRef.child(gameId).child(matchingList[position].userId.toString()).child("likeList").child("likedUserId").setValue(currentUserId)
+                        userLikeOtherUser(matchingList[position], model, false)
+                    }
                 } else {
                     Toast.makeText(this@GameDetailActivity, "본인은 좋아요 할 수 없습니다.", Toast.LENGTH_SHORT).show()
                     return
@@ -123,11 +126,12 @@ class GameDetailActivity: AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (dataModel in dataSnapshot.children) {
 
-                    val matchingUserItem = dataModel.getValue(MatchingUserItem::class.java)
-                    Log.d(TAG, "matchingUserItem?.userId: ${matchingUserItem?.userId}")
-                    Log.d(TAG, "gameId: $gameId")
-                    getUserLikeList(matchingUserItem!!)
+                    val matchingUserItem = dataModel.getValue(MatchingRegistration::class.java)
+                    Log.d(TAG, "dataModel: $dataModel")
+                    matchingList.add(matchingUserItem!!)
                 }
+
+                gameDetailAdapter.submitList(matchingList.sortedBy { it.dateTime })
 
                 //gameDetailAdapter.notifyDataSetChanged()
             }
@@ -140,36 +144,42 @@ class GameDetailActivity: AppCompatActivity() {
         FirebaseRef.matchingRegistrationRef.child(gameId).addValueEventListener(postListener)
     }
 
-    private fun getUserLikeList(matchingUserItem: MatchingUserItem) {
+    private fun getUserLikeList(matchingUserItem: MatchingRegistration) {
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (dataModel in dataSnapshot.children) {
 
-                    Log.d(TAG, "matchingUserItem: $matchingUserItem")
-
-                    Log.d(TAG, "dataModel.key: ${dataModel.key}")
-
-                    matchingUserItem.favorite = dataModel.getValue(Boolean::class.java)
-                    matchingList.add(matchingUserItem)
-                    gameDetailAdapter.submitList(matchingList.sortedBy { it.dateTime })
                 }
 
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                matchingList.add(matchingUserItem)
-                gameDetailAdapter.submitList(matchingList.sortedBy { it.dateTime })
+
             }
         }
-        FirebaseRef.userLikeRef.child(currentUserId).child(gameId).addValueEventListener(postListener)
+        FirebaseRef.userLikeRef.child(currentUserId).addValueEventListener(postListener)
     }
 
 
 
 
-    private fun userLikeOtherUser(otherUid: String) {
+    private fun userLikeOtherUser(matchingUserItem: MatchingRegistration, model: GameDetail?, isLiked: Boolean) {
+        if (!isLiked) {
+            val matchingUser = mutableMapOf<String, Any>()
 
-        FirebaseRef.userLikeRef.child(currentUserId).child(gameId).child(otherUserId).setValue(true)
+            matchingUser["userId"] = matchingUserItem.userId.toString()
+            matchingUser["userName"] = matchingUserItem.userName.toString()
+            matchingUser["age"] = matchingUserItem.age?.toInt()!!
+            matchingUser["gender"] = matchingUserItem.gender.toString()
+            matchingUser["preferredSeat"] = matchingUserItem.preferredSeat.toString()
+            matchingUser["dateTime"] = System.currentTimeMillis()
+            if (model != null) {
+                matchingUser["gameInfo"] = model.Game
+            }
+            FirebaseRef.userLikeRef.child(currentUserId).child(gameId).setValue(matchingUser)
+        } else {
+            FirebaseRef.userLikeRef.child(currentUserId).child(gameId).setValue(null)
+        }
     }
 
     private fun getOtherUserLikeList(otherUid: String) {

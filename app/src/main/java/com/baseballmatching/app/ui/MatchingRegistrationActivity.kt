@@ -57,7 +57,6 @@ class MatchingRegistrationActivity: AppCompatActivity() {
             matchingUser["gender"] = gender
             matchingUser["preferredSeat"] = preferredSeat
             matchingUser["dateTime"] = System.currentTimeMillis()
-            matchingUser["favorite"] = false
 
             Firebase.database.reference.child(DB_MATCHING_LIST).child(gameId.toString()).child(currentUserId).updateChildren(matchingUser).addOnSuccessListener {
                     Toast.makeText(this, "매칭 등록이 완료되었습니다.", Toast.LENGTH_SHORT).show()
