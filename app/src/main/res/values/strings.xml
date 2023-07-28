@@ -5,4 +5,6 @@
     <string name="title_my_page">마이페이지</string>
     <string name="game_detail_title">%1$s vs %2$s</string>
     <string name="game_detail_date">%1$s월 %2$s일 %3$s시 %4$s분</string>
+    <!--<string name="matching_user_age_and_gender">%1$s / %2$s</string>
+    <string name="matching_user_preferred_seat">선호 좌석: %1$s석</string>-->
 </resources>

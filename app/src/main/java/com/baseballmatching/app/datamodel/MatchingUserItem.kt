@@ -6,5 +6,6 @@ data class MatchingUserItem (
      val age: String? = null,
      val gender: String? = null,
      val preferredSeat: String? = null,
-     val dateTime: Long? = null
+     val dateTime: Long? = null,
+     var favorite: Boolean? = null
 )
