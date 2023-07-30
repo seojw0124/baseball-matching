@@ -1,9 +1,10 @@
-package com.baseballmatching.app.ui.matching.child
+package com.baseballmatching.app.ui.matching
 
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.baseballmatching.app.ui.matching.MatchingFragment
+import com.baseballmatching.app.ui.matching.child.MatchedUsersFragment
+import com.baseballmatching.app.ui.matching.child.MatchingRequestedUsersFragment
+import com.baseballmatching.app.ui.matching.child.MatchingUsersFragment
 
 class ViewpagerFragmentAdapter(fragment: Fragment): FragmentStateAdapter(fragment) {
 

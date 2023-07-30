@@ -54,7 +54,6 @@ class HomeFragment : Fragment() {
             // 클릭했을 때
             val intent = Intent(context, GameDetailActivity::class.java)
             intent.putExtra("game", game)
-            Log.d("HomeFragment", "game: $game")
 
             startActivity(intent)
         }
@@ -102,7 +101,7 @@ class HomeFragment : Fragment() {
 
                         val gameDetail = GameDetail(game, homeLogo, awayLogo, ballpark, time, ballparkImage)
 
-                        if (date == currentDate) {
+                        if (date == "2023-07-29") {
                             gameList.add(gameDetail)
                             Log.d("HomeFragment", "gameList: $gameList")
                         }
@@ -112,7 +111,7 @@ class HomeFragment : Fragment() {
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    Log.d("HomeFragment", "onCancelled: ${error.message}")
+                    Log.e("HomeFragment", "onCancelled: ${error.toException()}")
                 }
             })
 

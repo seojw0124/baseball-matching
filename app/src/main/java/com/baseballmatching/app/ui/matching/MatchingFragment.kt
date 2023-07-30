@@ -6,9 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import com.baseballmatching.app.R
 import com.baseballmatching.app.databinding.FragmentMatchingBinding
-import com.baseballmatching.app.ui.matching.child.ViewpagerFragmentAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 
 class MatchingFragment: Fragment() {

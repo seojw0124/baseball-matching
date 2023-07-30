@@ -19,6 +19,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
+import java.util.UUID
 
 class GameDetailActivity: AppCompatActivity() {
     private lateinit var binding: ActivityGameDetailBinding
@@ -28,7 +29,6 @@ class GameDetailActivity: AppCompatActivity() {
     private lateinit var gameId: String
     val currentUserId = Firebase.auth.currentUser?.uid.toString()
     private lateinit var otherUserId: String
-    private var isLiked = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,17 +75,16 @@ class GameDetailActivity: AppCompatActivity() {
         }
         gameDetailAdapter.itemClickListener = object : GameDetailAdapter.OnItemClickListener {
             override fun onItemClick(position: Int) {
-                if (matchingList[position].userId != currentUserId) {
-                    otherUserId = matchingList[position].userId.toString()
+                val item = matchingList[position]
+                if (item.userId != currentUserId) {
+                    otherUserId = item.userId.toString()
 
-                    if (matchingList[position].likeList?.likedUserId == currentUserId) {
-                        Log.d(TAG, "onItemClick if: ${matchingList[position].likeList?.likedUserId}")
-                        FirebaseRef.matchingRegistrationRef.child(gameId).child(matchingList[position].userId.toString()).child("likeList").child("likedUserId").setValue(null)
-                        userLikeOtherUser(matchingList[position], model, true)
+                    Log.d(TAG, "onItemClick: $item.likeList}")
+
+                    if (item.likeList?.contains(currentUserId) == true) {
+                        userLikeOtherUser(item, model, true)
                     } else {
-                        Log.d(TAG, "onItemClick else: ${matchingList[position].likeList?.likedUserId}")
-                        FirebaseRef.matchingRegistrationRef.child(gameId).child(matchingList[position].userId.toString()).child("likeList").child("likedUserId").setValue(currentUserId)
-                        userLikeOtherUser(matchingList[position], model, false)
+                        userLikeOtherUser(item, model, false)
                     }
                 } else {
                     Toast.makeText(this@GameDetailActivity, "본인은 좋아요 할 수 없습니다.", Toast.LENGTH_SHORT).show()
@@ -128,10 +127,11 @@ class GameDetailActivity: AppCompatActivity() {
 
                     val matchingUserItem = dataModel.getValue(MatchingRegistration::class.java)
                     Log.d(TAG, "dataModel: $dataModel")
+                    Log.d(TAG, "matchingUserItem: ${matchingUserItem?.likeList}")
                     matchingList.add(matchingUserItem!!)
                 }
 
-                gameDetailAdapter.submitList(matchingList.sortedBy { it.dateTime })
+                gameDetailAdapter.submitList(matchingList)
 
                 //gameDetailAdapter.notifyDataSetChanged()
             }
@@ -164,6 +164,7 @@ class GameDetailActivity: AppCompatActivity() {
 
 
     private fun userLikeOtherUser(matchingUserItem: MatchingRegistration, model: GameDetail?, isLiked: Boolean) {
+
         if (!isLiked) {
             val matchingUser = mutableMapOf<String, Any>()
 
@@ -173,12 +174,33 @@ class GameDetailActivity: AppCompatActivity() {
             matchingUser["gender"] = matchingUserItem.gender.toString()
             matchingUser["preferredSeat"] = matchingUserItem.preferredSeat.toString()
             matchingUser["dateTime"] = System.currentTimeMillis()
+
+            val likeReceiveUser = mutableMapOf<String, Any>()
+            likeReceiveUser["userId"] = currentUserId
+
             if (model != null) {
                 matchingUser["gameInfo"] = model.Game
+                likeReceiveUser["gameInfo"] = model.Game
             }
-            FirebaseRef.userLikeRef.child(currentUserId).child(gameId).setValue(matchingUser)
+            FirebaseRef.userLikeRef.child(currentUserId).child(gameId).child(matchingUserItem.userId.toString()).setValue(matchingUser)
+                .addOnSuccessListener {
+                    FirebaseRef.userLikeReceivedRef.child(matchingUserItem.userId.toString()).child(gameId+"_"+currentUserId).setValue(likeReceiveUser)
+                    FirebaseRef.matchingRegistrationRef.child(gameId).child(matchingUserItem.userId.toString()).child("likeList").child(currentUserId).setValue(currentUserId)
+                Toast.makeText(this, "매칭을 신청하였습니다.", Toast.LENGTH_SHORT).show()
+            }
+                .addOnFailureListener {
+                Toast.makeText(this, "매칭 신청에 실패하였습니다.", Toast.LENGTH_SHORT).show()
+            }
         } else {
-            FirebaseRef.userLikeRef.child(currentUserId).child(gameId).setValue(null)
+            FirebaseRef.userLikeRef.child(currentUserId).child(gameId).child(matchingUserItem.userId.toString()).setValue(null)
+                .addOnSuccessListener {
+                    FirebaseRef.userLikeReceivedRef.child(matchingUserItem.userId.toString()).child(gameId+"_"+currentUserId).setValue(null)
+                    FirebaseRef.matchingRegistrationRef.child(gameId).child(matchingUserItem.userId.toString()).child("likeList").child(currentUserId).setValue(null)
+                Toast.makeText(this, "매칭 신청을 취소하였습니다.", Toast.LENGTH_SHORT).show()
+            }
+                .addOnFailureListener {
+                    Toast.makeText(this, "매칭 신청 취소에 실패하였습니다.", Toast.LENGTH_SHORT).show()
+                }
         }
     }
 

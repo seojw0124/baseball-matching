@@ -12,6 +12,7 @@ class FirebaseRef {
             val teamsRef = database.getReference("teams")
             val userLikeRef = database.getReference("userLike")
             val matchingRegistrationRef = database.getReference("matching_registration")
-
+            val userLikeReceivedRef = database.getReference("userLikeReceived")
+            val matchingCompleteRef = database.getReference("matching_complete")
         }
 }

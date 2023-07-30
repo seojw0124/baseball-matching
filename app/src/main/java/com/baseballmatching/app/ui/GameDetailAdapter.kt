@@ -20,7 +20,7 @@ class GameDetailAdapter(val currentUserId: String): ListAdapter<MatchingRegistra
     inner class ViewHolder(private val binding: ItemMatchingRegistrationBinding): RecyclerView.ViewHolder(binding.root) {
         private var favorite = false
         fun bind(matchingUser: MatchingRegistration) {
-            if (matchingUser.likeList?.likedUserId == currentUserId) {
+            if (matchingUser.likeList?.contains(currentUserId) == true) {
                 binding.ivLike.setImageResource(R.drawable.baseline_favorite_24)
             } else {
                 binding.ivLike.setImageResource(R.drawable.baseline_favorite_border_24)
