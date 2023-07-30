@@ -9,7 +9,3 @@ data class MatchingRegistration (
     val dateTime: Long? = null,
     val likeList: Map<String, String>? = null,
 )
-
-data class LikeListItem (
-    val likedUserId: String? = null
-)

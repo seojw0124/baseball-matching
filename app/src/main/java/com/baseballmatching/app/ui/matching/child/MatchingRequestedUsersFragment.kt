@@ -158,12 +158,17 @@ class MatchingRequestedUsersFragment: Fragment() {
     private fun getMatchingRegistration(item: MatchingUserItem, position: Int) {
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val matchingRegistration = dataSnapshot.getValue(MatchingRegistration::class.java)
+                val matchingRegistration = dataSnapshot.getValue(MatchingUserItem::class.java)
                 Log.d(TAG, "matchingRegistration: $matchingRegistration")
+                if (matchingRegistration != null) {
+                    matchingRegistration.gameInfo = item.gameInfo
+                }
 
                 FirebaseRef.matchingCompleteRef.child(currentUserId).child(item.gameInfo?.id.toString()+"_"+item.userId.toString()).setValue(item)
                 FirebaseRef.matchingCompleteRef.child(item.userId.toString()).child(item.gameInfo?.id.toString()+"_"+currentUserId).setValue(matchingRegistration)
+                FirebaseRef.matchingRegistrationRef.child(item.gameInfo?.id.toString()).child(item.userId.toString()).child("likeList").child(currentUserId).setValue(currentUserId)
                 FirebaseRef.userLikeReceivedRef.child(currentUserId).child(item.gameInfo?.id.toString()+"_"+item.userId.toString()).removeValue()
+                FirebaseRef.userLikeRef.child(item.userId.toString()).child(item.gameInfo?.id.toString()).child(currentUserId).removeValue()
                 // remove from requestedMatchingUserList
                 requestedMatchingUserList.removeAt(position)
                 Log.d(TAG, "requestedMatchingUserList: $requestedMatchingUserList")

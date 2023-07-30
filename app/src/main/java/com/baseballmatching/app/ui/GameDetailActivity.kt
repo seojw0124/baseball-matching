@@ -83,6 +83,8 @@ class GameDetailActivity: AppCompatActivity() {
 
                     if (item.likeList?.contains(currentUserId) == true) {
                         userLikeOtherUser(item, model, true)
+                        // 리사이클러뷰에 있는 아이템의 좋아요를 빈 하트로 바꿔줌
+                        gameDetailAdapter.notifyItemChanged(position)
                     } else {
                         userLikeOtherUser(item, model, false)
                     }
@@ -99,12 +101,15 @@ class GameDetailActivity: AppCompatActivity() {
         super.onStart()
         Log.d(TAG, "onStart: ")
         getMatchingList(gameId)
+        // 리사이클러뷰 데이터 갱신
+        //gameDetailAdapter.notifyDataSetChanged()
     }
 
     override fun onResume() {
         super.onResume()
-        //gameDetailAdapter.notifyDataSetChanged()
         matchingList = mutableListOf()
+        //gameDetailAdapter.submitList(matchingList)
+        gameDetailAdapter.notifyDataSetChanged()
         Log.d(TAG, "onResume: ")
     }
 
@@ -116,7 +121,7 @@ class GameDetailActivity: AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
 
-        //matchingList = mutableListOf()
+        matchingList = mutableListOf()
         Log.d(TAG, "onDestroy: ")
     }
 
@@ -130,10 +135,8 @@ class GameDetailActivity: AppCompatActivity() {
                     Log.d(TAG, "matchingUserItem: ${matchingUserItem?.likeList}")
                     matchingList.add(matchingUserItem!!)
                 }
-
                 gameDetailAdapter.submitList(matchingList)
 
-                //gameDetailAdapter.notifyDataSetChanged()
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
