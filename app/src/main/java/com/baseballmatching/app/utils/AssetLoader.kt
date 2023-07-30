@@ -1,4 +1,4 @@
-package com.baseballmatching.app
+package com.baseballmatching.app.utils
 
 import android.content.Context
 

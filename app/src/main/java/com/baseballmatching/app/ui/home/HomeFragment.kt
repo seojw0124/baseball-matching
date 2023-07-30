@@ -7,17 +7,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.baseballmatching.app.AssetLoader
+import com.baseballmatching.app.utils.AssetLoader
 import com.baseballmatching.app.R
 import com.baseballmatching.app.databinding.FragmentHomeBinding
 import com.baseballmatching.app.datamodel.Game
 import com.baseballmatching.app.datamodel.GameDetail
-import com.baseballmatching.app.datamodel.Team
 import com.baseballmatching.app.datamodel.TeamData
 import com.baseballmatching.app.ui.GameDetailActivity
 import com.google.firebase.database.DataSnapshot
@@ -26,9 +23,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
-import java.time.Instant
 import java.time.LocalDate
-import java.time.LocalDateTime
 
 class HomeFragment : Fragment() {
 
@@ -39,7 +34,8 @@ class HomeFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     private val currentDate = LocalDate.now().toString()
     private var gameList: MutableList<GameDetail> = mutableListOf()
-    //private var gameDetail: GameDetail? = null
+    @RequiresApi(Build.VERSION_CODES.O)
+    private var selectedDate = currentDate
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,9 +45,12 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentHomeBinding.bind(view)
+
+        binding.tvDate.text = "${currentDate.substring(5, 7)}월 ${currentDate.substring(8, 10)}일"
 
         gameList.clear()
 
@@ -59,15 +58,61 @@ class HomeFragment : Fragment() {
             // 클릭했을 때
             val intent = Intent(context, GameDetailActivity::class.java)
             intent.putExtra("game", game)
-            Log.d("HomeFragment", "game: $game")
 
             startActivity(intent)
         }
 
+        getGameList(currentDate)
+
+        binding.rvGameListRecyclerView.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = homeAdapter
+        }
+
+        binding.ivRightArrow.setOnClickListener {
+            // currentDate에 1일 더하기
+            gameList = mutableListOf()
+            val dateSplit = selectedDate.split("-")
+            val year = dateSplit[0].toInt()
+            val month = dateSplit[1].toInt()
+            val day = dateSplit[2].toInt()
+            val nextDate = LocalDate.of(year, month, day).plusDays(1).toString()
+            selectedDate = nextDate
+            binding.tvDate.text = "${nextDate.substring(5, 7)}월 ${nextDate.substring(8, 10)}일"
+
+            getGameList(nextDate)
+        }
+        binding.ivLeftArrow.setOnClickListener {
+            // currentDate에 1일 빼기
+            gameList = mutableListOf()
+            val dateSplit = selectedDate.split("-")
+            val year = dateSplit[0].toInt()
+            val month = dateSplit[1].toInt()
+            val day = dateSplit[2].toInt()
+            val prevDate = LocalDate.of(year, month, day).minusDays(1).toString()
+            selectedDate = prevDate
+            binding.tvDate.text = "${prevDate.substring(5, 7)}월 ${prevDate.substring(8, 10)}일"
+
+            getGameList(prevDate)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("HomeFragment", "onResume: ")
+
+        //homeAdapter.notifyDataSetChanged()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        gameList = mutableListOf()
+    }
+
+    private fun getGameList(dateString: String) {
         val assetLoader = AssetLoader()
         val teamsJsonString = assetLoader.getJsonString(requireContext(), "teams.json")
-
-        // firebase realtime database에서 데이터 가져오기
         Firebase.database.reference.child("games")
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 @RequiresApi(Build.VERSION_CODES.O)
@@ -107,36 +152,26 @@ class HomeFragment : Fragment() {
 
                         val gameDetail = GameDetail(game, homeLogo, awayLogo, ballpark, time, ballparkImage)
 
-                        if (date == currentDate) {
+                        if (date == dateString) {
                             gameList.add(gameDetail)
                             Log.d("HomeFragment", "gameList: $gameList")
                         }
                     }
 
                     homeAdapter.submitList(gameList)
+
+                    if (gameList.isEmpty()) {
+                        binding.tvNoGame.visibility = View.VISIBLE
+                        Log.d("HomeFragment", "onViewCreated: gameList is empty")
+                    } else {
+                        binding.tvNoGame.visibility = View.GONE
+                        Log.d("HomeFragment", "onViewCreated: gameList is not empty")
+                    }
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    Log.d("HomeFragment", "onCancelled: ${error.message}")
+                    Log.e("HomeFragment", "onCancelled: ${error.toException()}")
                 }
             })
-
-        binding.rvGameListRecyclerView.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = homeAdapter
-        }
     }
-
-    override fun onResume() {
-        super.onResume()
-        homeAdapter.notifyDataSetChanged()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-
-        gameList = mutableListOf()
-    }
-
-
 }

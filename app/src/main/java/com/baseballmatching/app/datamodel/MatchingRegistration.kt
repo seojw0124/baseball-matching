@@ -1,6 +1,6 @@
 package com.baseballmatching.app.datamodel
 
-data class MatchingUserItem(
+data class MatchingRegistration (
     val userId: String? = null,
     val userName: String? = null,
     val age: String? = null,
@@ -8,5 +8,4 @@ data class MatchingUserItem(
     val preferredSeat: String? = null,
     val dateTime: Long? = null,
     val likeList: Map<String, String>? = null,
-    var gameInfo: Game? = null,
 )

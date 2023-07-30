@@ -56,14 +56,17 @@ class MatchingRegistrationActivity: AppCompatActivity() {
             matchingUser["age"] = age
             matchingUser["gender"] = gender
             matchingUser["preferredSeat"] = preferredSeat
+            matchingUser["dateTime"] = System.currentTimeMillis()
 
-            Firebase.database.reference.child(DB_MATCHING_LIST).child(gameId.toString()).updateChildren(matchingUser).addOnSuccessListener {
+            Firebase.database.reference.child(DB_MATCHING_LIST).child(gameId.toString()).child(currentUserId).updateChildren(matchingUser)
+                .addOnSuccessListener {
                     Toast.makeText(this, "매칭 등록이 완료되었습니다.", Toast.LENGTH_SHORT).show()
                 }.addOnFailureListener {
                     Toast.makeText(this, "매칭 등록에 실패했습니다.", Toast.LENGTH_SHORT).show()
                     Log.d("firebase matching_list", "matching_list data update failed")
                 }
 
+            // 매칭 등록 후 이전 화면으로 돌아가기
             finish()
         }
     }
