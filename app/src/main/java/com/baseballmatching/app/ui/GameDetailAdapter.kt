@@ -2,6 +2,7 @@ package com.baseballmatching.app.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -38,11 +39,17 @@ class GameDetailAdapter(val currentUserId: String): ListAdapter<MatchingRegistra
 
         init {
             binding.ivLike.setOnClickListener {
+                val imageView = binding.ivLike
+                val currentDrawble = imageView.drawable
+
                 itemClickListener?.onItemClick(adapterPosition)
-                if (favorite) {
-                    binding.ivLike.setImageResource(R.drawable.baseline_favorite_24)
-                } else {
+                // 만약 현재 이미지 뷰의 이미지가 R.drawable.baseline_favorite_24라면
+                // R.drawable.baseline_favorite_border_24로 변경
+                // 아니라면 R.drawable.baseline_favorite_24로 변경
+                if (currentDrawble.constantState == ContextCompat.getDrawable(imageView.context, R.drawable.baseline_favorite_24)?.constantState) {
                     binding.ivLike.setImageResource(R.drawable.baseline_favorite_border_24)
+                } else {
+                    binding.ivLike.setImageResource(R.drawable.baseline_favorite_24)
                 }
             }
         }

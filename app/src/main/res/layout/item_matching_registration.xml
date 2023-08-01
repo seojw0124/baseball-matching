@@ -52,11 +52,10 @@
         android:id="@+id/iv_like"
         android:layout_width="30dp"
         android:layout_height="match_parent"
+        android:contentDescription="Like"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/selector_like"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:contentDescription="Like"
-        />
+        tools:src="@drawable/baseline_favorite_border_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
