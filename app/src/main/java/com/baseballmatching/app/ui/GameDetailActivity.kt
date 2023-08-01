@@ -83,8 +83,6 @@ class GameDetailActivity: AppCompatActivity() {
 
                     if (item.likeList?.contains(currentUserId) == true) {
                         userLikeOtherUser(item, model, true)
-                        // 리사이클러뷰에 있는 아이템의 좋아요를 빈 하트로 바꿔줌
-                        gameDetailAdapter.notifyItemChanged(position)
                     } else {
                         userLikeOtherUser(item, model, false)
                     }
@@ -189,7 +187,8 @@ class GameDetailActivity: AppCompatActivity() {
                 .addOnSuccessListener {
                     FirebaseRef.userLikeReceivedRef.child(matchingUserItem.userId.toString()).child(gameId+"_"+currentUserId).setValue(likeReceiveUser)
                     FirebaseRef.matchingRegistrationRef.child(gameId).child(matchingUserItem.userId.toString()).child("likeList").child(currentUserId).setValue(currentUserId)
-                Toast.makeText(this, "매칭을 신청하였습니다.", Toast.LENGTH_SHORT).show()
+                    // 해당 포지션 좋아요를 빨간 하트로 바꿔줌
+                    Toast.makeText(this, "매칭을 신청하였습니다.", Toast.LENGTH_SHORT).show()
             }
                 .addOnFailureListener {
                 Toast.makeText(this, "매칭 신청에 실패하였습니다.", Toast.LENGTH_SHORT).show()
